@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import SearchBox from '../SearchBox/SearchBox'
 import Dropdown from '../Dropdown/Dropdown'
 import styled from 'styled-components'
@@ -18,15 +18,32 @@ const NavStyle = styled.div`
        margin-left: 2rem;
    }
 `;
-const Nav = () =>
+class Nav extends Component
 {
-    return (
-        <NavStyle>
-            <a href="#"><img src={logo} style={{width: '50px', height: '50px'}}></img></a>
-            <Dropdown id="dropdown"></Dropdown>
-            <SearchBox />
-            <p>User</p>
-        </NavStyle>
-    );
+    constructor(props)
+    {
+        super(props);
+        this.state = {open: false};
+        this.changeOpen = this.changeOpen.bind(this);
+    }
+
+
+    changeOpen() {
+       this.setState(state => ({
+           open: !state.open
+       }))
+    }
+
+    render(){
+        return (
+            <NavStyle>
+                <a href="#"><img src={logo} style={{width: '50px', height: '50px'}}></img></a>
+                <Dropdown openM={this.changeOpen} openS={this.state.open} id="dropdown"></Dropdown>
+                <SearchBox />
+                <p>User</p>
+            </NavStyle>
+        );
+    }
+
 }
 export default Nav;
