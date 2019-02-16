@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav  from '../../components/Nav/Nav';
-import ContentWrapper from '../ContentWrapper/ContentWrapper'
-import { createGlobalStyle } from 'styled-components';
+import BodyWrapper from '../BodyWrapper/BodyWrapper'
+import styled, { createGlobalStyle } from 'styled-components';
 
 createGlobalStyle`
 html {
@@ -22,12 +22,21 @@ body {
 
 `;
 
+const ContentWrapper = styled.div `
+background-color: #DAE0E6;
+max-width: 100%;
+height: 100vh;
+
+`;
+
 const FrontPage = () => {
     return (
-        <div>
-            <Nav></Nav>
-            <ContentWrapper></ContentWrapper>
-        </div>
+   
+            <ContentWrapper>
+                <Nav></Nav>
+                <BodyWrapper />
+            </ContentWrapper>
+        
     );
 }
 
